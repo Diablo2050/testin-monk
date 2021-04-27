@@ -16,6 +16,15 @@ service-2:
 
 services:
     defines: process-group
+    balancers:
+        defines: balancers
+        app-balancer:
+            type: http
+            port: 8080
+            instances:
+                - lbs/service-1
+                - lbs/service-2
+
     runnable-list:
         - lbs/service-1
         - lbs/service-2
