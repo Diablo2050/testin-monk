@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+    deploy:
+        docker:
+            - image: gcr.io/monk-releases/monk-ci:latest
+        steps:
+            - checkout
+            - run:
+                command: |
+                    MONK="monk -s monkcode://$MONKCODE --nofancy --nocolor"
+                    $MONK login --email amrmrashad@gmail.com --password $MONK_PASS
+                    $MONK load mongo.yml
+                    $MONK update guides/database
+workflows:
+    build:
+        jobs:
+            - deploy
