@@ -9,8 +9,8 @@ jobs:
                 command: |
                     MONK="monk -s monkcode://$MONKCODE --nofancy --nocolor"
                     $MONK login --email amrmrashad@gmail.com --password $MONK_PASS
-                    $MONK load mongo.yml
-                    $MONK update guides/database
+                    $MONK load app.yml
+                    $MONK update lbs/services
 workflows:
     build:
         jobs:

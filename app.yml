@@ -1,0 +1,21 @@
+namespace: /lbs
+
+service-1:
+    defines: runnable
+    inherits: nginx/latest
+    variables:
+        defines: variables
+        listen-port: 8080
+
+service-2:
+    defines: runnable
+    inherits: nginx/latest
+    variables:
+        defines: variables
+        listen-port: 8080
+
+services:
+    defines: process-group
+    runnable-list:
+        - lbs/service-1
+        - lbs/service-2
